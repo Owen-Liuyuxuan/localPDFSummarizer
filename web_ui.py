@@ -30,7 +30,7 @@ def extract_image_text_pdf(pdf_doc):
     rendered_imgs  = []
     for page_index in range(len(pdf_doc)): 
         page = pdf_doc.load_page(page_index)
-        resolution = 500
+        resolution = 300
         pix = page.get_pixmap(matrix=fitz.Matrix(resolution / 72, resolution / 72))
         img = Image.open(io.BytesIO(pix.tobytes()))
         rendered_imgs.append(img)
@@ -145,7 +145,7 @@ model_dictionary = load_model()
 st.title("PDF Paper summarizer")
 
 max_length = st.sidebar.slider(
-    'max_length', 0, 32768, 8192, step=1
+    'max_length', 0, 8192, 4096, step=1
 )
 top_p = st.sidebar.slider(
     'top_p', 0.0, 1.0, 0.8, step=0.01
@@ -186,6 +186,9 @@ if button:
     
     with st.expander("Paper Tables"):
         st.image(fig_tab_dict['tables'])
+
+    with st.expander("Original Paper"):
+        st.image(images)
 
     with st.chat_message(name="paper summarizer", avatar="assistant"):
         message_placeholder = st.empty()
