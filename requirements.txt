@@ -1,0 +1,7 @@
+streamlit
+opencv-python
+numpy
+Pillow
+layoutparser
+PyMuPDF
+transformers<4.37.0
