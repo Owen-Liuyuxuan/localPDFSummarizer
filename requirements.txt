@@ -1,3 +1,5 @@
+cpm_kernels
+sentencepiece
 streamlit
 opencv-python
 numpy
